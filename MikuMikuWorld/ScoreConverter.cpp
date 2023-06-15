@@ -299,6 +299,10 @@ namespace MikuMikuWorld
 				if (note.isFlick())
 					directionals.push_back(SUSNote{ note.tick, note.lane + 2, note.width, flickToType[note.flick] });
 			}
+			else if (note.getType() == NoteType::Damage)
+			{
+				taps.push_back(SUSNote{ note.tick, note.lane + 2, note.width, 4});
+			}
 		}
 
 		for (const auto& [id, hold] : score.holdNotes)
