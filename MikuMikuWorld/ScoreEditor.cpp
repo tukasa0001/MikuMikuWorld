@@ -21,6 +21,7 @@ namespace MikuMikuWorld
 		&config.input.timelineHold,
 		&config.input.timelineHoldMid,
 		&config.input.timelineFlick,
+		&config.input.timelineDamage,
 		&config.input.timelineCritical,
 		&config.input.timelineBpm,
 		&config.input.timelineTimeSignature,
