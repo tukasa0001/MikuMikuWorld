@@ -9,6 +9,7 @@ namespace MikuMikuWorld
 		InsertLong,
 		InsertLongMid,
 		InsertFlick,
+		InsertDamage,
 		MakeCritical,
 		InsertBPM,
 		InsertTimeSign,

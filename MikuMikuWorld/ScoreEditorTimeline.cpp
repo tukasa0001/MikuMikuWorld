@@ -877,6 +877,10 @@ namespace MikuMikuWorld
 			insertNote(context, edit, currentMode == TimelineMode::MakeCritical);
 			break;
 
+		case TimelineMode::InsertDamage:
+			insertDamageNote(context, edit);
+			break;
+
 		case TimelineMode::InsertLong:
 			insertingHold = true;
 			break;
@@ -1721,6 +1725,17 @@ namespace MikuMikuWorld
 		Score prev = context.score;
 
 		Note newNote = inputNotes.tap;
+		newNote.ID = nextID++;
+
+		context.score.notes[newNote.ID] = newNote;
+		context.pushHistory("Insert note", prev, context.score);
+	}
+
+	void ScoreEditorTimeline::insertDamageNote(ScoreContext& context, EditArgs& edit)
+	{
+		Score prev = context.score;
+
+		Note newNote = inputNotes.damage;
 		newNote.ID = nextID++;
 
 		context.score.notes[newNote.ID] = newNote;

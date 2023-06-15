@@ -55,7 +55,8 @@ namespace MikuMikuWorld
 			Note holdStart;
 			Note holdEnd;
 			Note holdStep;
-		} inputNotes{ Note(NoteType::Tap), Note(NoteType::Hold), Note(NoteType::HoldEnd), Note(NoteType::HoldMid) };
+			Note damage;
+		} inputNotes{ Note(NoteType::Tap), Note(NoteType::Hold), Note(NoteType::HoldEnd), Note(NoteType::HoldMid), Note(NoteType::Damage) };
 
 		struct StepDrawData
 		{
@@ -112,6 +113,7 @@ namespace MikuMikuWorld
 		void eventEditor(ScoreContext& context);
 
 		void insertNote(ScoreContext& context, EditArgs& edit, bool crticial);
+		void insertDamageNote(ScoreContext& context, EditArgs& edit);
 		void insertHold(ScoreContext& context, EditArgs& edit);
 		void insertHoldStep(ScoreContext& context, EditArgs& edit, int holdId);
 		void insertEvent(ScoreContext& context, EditArgs& edit);
