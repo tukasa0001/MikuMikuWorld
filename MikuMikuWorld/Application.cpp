@@ -297,6 +297,7 @@ namespace MikuMikuWorld
 		ResourceManager::loadTexture(appDir + "res/textures/timeline_flick_default.png");
 		ResourceManager::loadTexture(appDir + "res/textures/timeline_flick_left.png");
 		ResourceManager::loadTexture(appDir + "res/textures/timeline_flick_right.png");
+		ResourceManager::loadTexture(appDir + "res/textures/timeline_damage.png");
 		ResourceManager::loadTexture(appDir + "res/textures/timeline_critical.png");
 		ResourceManager::loadTexture(appDir + "res/textures/timeline_bpm.png");
 		ResourceManager::loadTexture(appDir + "res/textures/timeline_time_signature.png");
