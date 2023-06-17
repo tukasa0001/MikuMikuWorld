@@ -6,6 +6,10 @@ namespace jsonIO
 {
 	mmw::Note jsonToNote(const json& data, mmw::NoteType type)
 	{
+		if (data.find("damage") != data.end() && data["damage"]) {
+			type = mmw::NoteType::Damage;
+		}
+
 		mmw::Note note(type);
 
 		if (data.find("tick") != data.end())
@@ -21,6 +25,9 @@ namespace jsonIO
 
 		if (note.getType() != mmw::NoteType::HoldMid && data.find("critical") != data.end())
 			note.critical = data["critical"];
+
+		if (data.find("trace") != data.end())
+			note.trace = data["trace"];
 
 		if (!note.hasEase())
 		{
@@ -46,6 +53,8 @@ namespace jsonIO
 		data["tick"] = note.tick;
 		data["lane"] = note.lane;
 		data["width"] = note.width;
+		data["trace"] = note.trace;
+		data["damage"] = note.getType() == mmw::NoteType::Damage;
 
 		if (note.getType() != mmw::NoteType::HoldMid)
 			data["critical"] = note.critical;
@@ -70,7 +79,8 @@ namespace jsonIO
 			const mmw::Note& note = score.notes.at(id);
 			switch (note.getType())
 			{
-			case mmw::NoteType::Tap: selectedNotes.insert(note.ID); break;
+			case mmw::NoteType::Tap:
+			case mmw::NoteType::Damage: selectedNotes.insert(note.ID); break;
 			case mmw::NoteType::Hold: selectedHolds.insert(note.ID); break;
 			case mmw::NoteType::HoldMid:
 			case mmw::NoteType::HoldEnd:
