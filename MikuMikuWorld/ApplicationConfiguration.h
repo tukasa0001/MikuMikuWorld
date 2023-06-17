@@ -42,6 +42,7 @@ namespace MikuMikuWorld
 		MultiInputBinding timelineHoldMid = { "timeline_hold_step", {ImGuiKey_4} };
 		MultiInputBinding timelineFlick = { "timeline_flick", {ImGuiKey_5} };
 		MultiInputBinding timelineDamage = { "timeline_damage", {} };
+		MultiInputBinding timelineTrace = { "timeline_trace", {} };
 		MultiInputBinding timelineCritical = { "timeline_critical", {ImGuiKey_6} };
 		MultiInputBinding timelineBpm = { "timeline_bpm", {ImGuiKey_7} };
 		MultiInputBinding timelineTimeSignature = { "timeline_time_signature", {ImGuiKey_8} };
