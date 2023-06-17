@@ -35,6 +35,15 @@ namespace MikuMikuWorld
 
 		int flag = reader->readInt32();
 		note.critical = flag & 1;
+		if (flag & 2) {
+			Note _note = note;
+			note = (NoteType::Damage);
+			note.tick = _note.tick;
+			note.lane = _note.lane;
+			note.width = _note.width;
+			note.flick = _note.flick;
+			note.critical = _note.critical;
+		}
 		return note;
 	}
 
@@ -49,6 +58,7 @@ namespace MikuMikuWorld
 
 		int flag = 0;
 		flag |= (int)note.critical;
+		flag |= (int)(note.getType() == NoteType::Damage) << 1;
 		writer->writeInt32(flag);
 	}
 
@@ -284,7 +294,7 @@ namespace MikuMikuWorld
 		int noteCount = 0;
 		for (const auto&[id, note] : score.notes)
 		{
-			if (note.getType() != NoteType::Tap)
+			if (note.getType() != NoteType::Tap && note.getType() != NoteType::Damage)
 				continue;
 
 			writeNote(note, &writer);
