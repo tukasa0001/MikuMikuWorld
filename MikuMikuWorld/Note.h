@@ -21,6 +21,7 @@ namespace MikuMikuWorld
 		int lane;
 		int width;
 		bool critical;
+		bool trace;
 		FlickType flick;
 
 		Note(NoteType _type);
