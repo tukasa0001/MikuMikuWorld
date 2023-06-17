@@ -44,6 +44,7 @@ namespace MikuMikuWorld
 			note.flick = _note.flick;
 			note.critical = _note.critical;
 		}
+		note.trace = flag & 4;
 		return note;
 	}
 
@@ -59,6 +60,7 @@ namespace MikuMikuWorld
 		int flag = 0;
 		flag |= (int)note.critical;
 		flag |= (int)(note.getType() == NoteType::Damage) << 1;
+		flag |= (int)note.trace << 2;
 		writer->writeInt32(flag);
 	}
 
