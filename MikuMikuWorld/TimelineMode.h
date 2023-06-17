@@ -24,6 +24,7 @@ namespace MikuMikuWorld
 		"hold",
 		"hold_step",
 		"flick",
+		"damage"
 		"critical",
 		"bpm",
 		"time_signature",
