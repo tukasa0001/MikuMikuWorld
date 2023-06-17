@@ -79,6 +79,12 @@ namespace MikuMikuWorld
 		{
 			index = 30;
 		}
+		else if (note.trace)
+		{
+			if (note.critical) index = 32;
+			else if (note.isFlick()) index = 33;
+			else index = 31;
+		}
 		else if (note.critical && note.getType() != NoteType::HoldMid)
 		{
 			index = 0;
