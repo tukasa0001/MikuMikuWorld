@@ -788,6 +788,10 @@ namespace MikuMikuWorld
 			inputNotes.holdStart.width = width;
 			inputNotes.holdStart.tick = tick;
 		}
+
+		inputNotes.damage.lane = lane;
+		inputNotes.damage.width = width;
+		inputNotes.damage.tick = tick;
 	}
 
 	void ScoreEditorTimeline::insertEvent(ScoreContext& context, EditArgs& edit)
