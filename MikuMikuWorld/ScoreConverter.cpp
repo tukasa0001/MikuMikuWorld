@@ -295,9 +295,13 @@ namespace MikuMikuWorld
 		{
 			if (note.getType() == NoteType::Tap)
 			{
-				taps.push_back(SUSNote{ note.tick, note.lane + 2, note.width, note.critical ? 2 : 1 });
+				int noteTypeId = note.critical ? 2 : 1;
+				if (note.trace) noteTypeId = 3;
+				taps.push_back(SUSNote{ note.tick, note.lane + 2, note.width, noteTypeId });
 				if (note.isFlick())
 					directionals.push_back(SUSNote{ note.tick, note.lane + 2, note.width, flickToType[note.flick] });
+				if(note.trace && note.critical)
+					taps.push_back(SUSNote{ note.tick, note.lane + 2, note.width, 2 });
 			}
 			else if (note.getType() == NoteType::Damage)
 			{
