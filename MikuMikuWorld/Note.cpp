@@ -75,7 +75,11 @@ namespace MikuMikuWorld
 		// default tap
 		int index = 3;
 
-		if (note.critical && note.getType() != NoteType::HoldMid)
+		if (note.getType() == NoteType::Damage)
+		{
+			index = 30;
+		}
+		else if (note.critical && note.getType() != NoteType::HoldMid)
 		{
 			index = 0;
 		}

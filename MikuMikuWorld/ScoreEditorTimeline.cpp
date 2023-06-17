@@ -672,7 +672,7 @@ namespace MikuMikuWorld
 		minNoteYDistance = INT_MAX;
 		for (auto& [id, note] : context.score.notes)
 		{
-			if (isNoteVisible(note) && note.getType() == NoteType::Tap)
+			if (isNoteVisible(note) && (note.getType() == NoteType::Tap || note.getType() == NoteType::Damage))
 			{
 				updateNote(context, note);
 				drawNote(note, renderer, noteTint);
@@ -753,7 +753,7 @@ namespace MikuMikuWorld
 			context.pasteData.maxLaneOffset);
 
 		for (const auto& [_, note] : context.pasteData.notes)
-			if (note.getType() == NoteType::Tap && isNoteVisible(note, hoverTick))
+			if ((note.getType() == NoteType::Tap || note.getType() == NoteType::Damage) && isNoteVisible(note, hoverTick))
 				drawNote(note, renderer, hoverTint, hoverTick, context.pasteData.offsetLane);
 
 		for (const auto& [_, hold] : context.pasteData.holds)
@@ -863,6 +863,10 @@ namespace MikuMikuWorld
 
 		case TimelineMode::InsertHiSpeed:
 			hiSpeedControl(hoverTick, edit.hiSpeed);
+			break;
+
+		case TimelineMode::InsertDamage:
+			drawNote(inputNotes.damage, renderer, hoverTint);
 			break;
 
 		default:
